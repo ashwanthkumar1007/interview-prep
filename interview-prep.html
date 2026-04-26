@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Mastery Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --accent: #7c3aed;
+    --accent2: #06b6d4;
+    --accent3: #f59e0b;
+    --accent4: #10b981;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(6,182,212,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(124,58,237,0.15);
+    border: 1px solid rgba(124,58,237,0.4);
+    color: #a78bfa;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #e2e8f0 0%, #a78bfa 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 6px;
+    margin-bottom: 36px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: center;
+  }
+
+  .tab.active {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 0 20px rgba(124,58,237,0.4);
+  }
+
+  /* Tab content */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Section */
+  .section {
+    margin-bottom: 28px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #e2e8f0;
+  }
+
+  .section-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .card:hover {
+    border-color: rgba(124,58,237,0.3);
+    background: var(--surface2);
+  }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+
+  .tag-purple { background: rgba(124,58,237,0.2); color: #a78bfa; }
+  .tag-cyan { background: rgba(6,182,212,0.15); color: #22d3ee; }
+  .tag-amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .tag-green { background: rgba(16,185,129,0.15); color: #34d399; }
+  .tag-red { background: rgba(239,68,68,0.15); color: #f87171; }
+
+  .card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .card ul li {
+    font-size: 13px;
+    color: #94a3b8;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .card ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 10px;
+    top: 2px;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+
+  .timeline-item.done .timeline-dot {
+    background: var(--accent);
+    box-shadow: 0 0 10px rgba(124,58,237,0.5);
+  }
+
+  .timeline-week {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent2);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 6px;
+  }
+
+  .timeline-desc {
+    font-size: 12.5px;
+    color: #64748b;
+    line-height: 1.55;
+  }
+
+  /* Grid */
+  .grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  @media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } }
+
+  /* Highlight box */
+  .highlight {
+    background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(6,182,212,0.05));
+    border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+  }
+
+  .highlight-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #a78bfa;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .highlight p {
+    font-size: 13px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  /* Pattern pill list */
+  .pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: #94a3b8;
+    white-space: nowrap;
+  }
+
+  /* Progress bar */
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    color: #94a3b8;
+    width: 130px;
+    flex-shrink: 0;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    animation: fillBar 1.2s ease both;
+  }
+
+  @keyframes fillBar {
+    from { width: 0; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+
+  .emphasis {
+    color: #a78bfa;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="badge">Interview Preparation Roadmap</div>
+    <h1>System Design &<br>LeetCode Mastery</h1>
+    <p class="subtitle">A structured, no-fluff plan to crack top-tier engineering interviews</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('hld')">🏗️ High Level Design</button>
+    <button class="tab" onclick="showTab('lld')">🔩 Low Level Design</button>
+    <button class="tab" onclick="showTab('lc')">💻 LeetCode Plan</button>
+  </div>
+
+  <!-- HIGH LEVEL SYSTEM DESIGN -->
+  <div id="hld" class="tab-content active">
+
+    <div class="highlight">
+      <div class="highlight-title">⚡ What is HLD?</div>
+      <p>High Level Design focuses on the <span class="emphasis">architecture</span> of a large-scale distributed system — scalability, availability, reliability, and trade-offs. Think: "Design Twitter", "Design Netflix", "Design URL Shortener".</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(124,58,237,0.15)">🧠</div>
+        <div>
+          <div class="section-title">Core Concepts to Master</div>
+          <div class="section-sub">Non-negotiable fundamentals</div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">Scalability <span class="tag tag-purple">Tier 1</span></div>
+          <ul>
+            <li>Horizontal vs Vertical scaling</li>
+            <li>Load balancing (Round Robin, Least Conn)</li>
+            <li>Stateless vs Stateful services</li>
+            <li>Auto-scaling strategies</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Databases <span class="tag tag-purple">Tier 1</span></div>
+          <ul>
+            <li>SQL vs NoSQL trade-offs</li>
+            <li>Sharding & Partitioning</li>
+            <li>Read replicas & replication</li>
+            <li>CAP theorem in practice</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Caching <span class="tag tag-cyan">Tier 1</span></div>
+          <ul>
+            <li>Redis / Memcached</li>
+            <li>Cache-aside, Write-through, Write-back</li>
+            <li>Cache invalidation strategies</li>
+            <li>CDN for static content</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Messaging & Queues <span class="tag tag-cyan">Tier 1</span></div>
+          <ul>
+            <li>Kafka, RabbitMQ, SQS</li>
+            <li>Pub/Sub vs message queues</li>
+            <li>Event-driven architecture</li>
+            <li>At-least / exactly-once delivery</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Networking <span class="tag tag-amber">Tier 2</span></div>
+          <ul>
+            <li>DNS, HTTP/HTTPS, TCP/UDP</li>
+            <li>REST vs GraphQL vs gRPC</li>
+            <li>WebSockets, Long polling, SSE</li>
+            <li>API Gateway patterns</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Reliability <span class="tag tag-amber">Tier 2</span></div>
+          <ul>
+            <li>Rate limiting (Token bucket, Leaky bucket)</li>
+            <li>Circuit breaker pattern</li>
+            <li>Idempotency & retries</li>
+            <li>Distributed transactions (Saga)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(6,182,212,0.15)">📐</div>
+        <div>
+          <div class="section-title">The HLD Interview Framework</div>
+          <div class="section-sub">Follow this structure every time</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item done">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 1 — 5 min</div>
+          <div class="timeline-title">Clarify Requirements</div>
+          <div class="timeline-desc">Functional requirements (what it does), Non-functional (scale, latency, availability, consistency). Ask: DAU, read/write ratio, data size, SLA.</div>
+        </div>
+        <div class="timeline-item done">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 2 — 5 min</div>
+          <div class="timeline-title">Capacity Estimation</div>
+          <div class="timeline-desc">Back-of-envelope: QPS, storage, bandwidth. E.g. 100M DAU × 10 requests/day = ~11,500 QPS. Show your math — interviewers love this.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 3 — 5 min</div>
+          <div class="timeline-title">High-Level Architecture</div>
+          <div class="timeline-desc">Draw: Client → API Gateway → Services → DB/Cache. Identify core components. Define API endpoints briefly.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 4 — 15 min</div>
+          <div class="timeline-title">Deep Dive Components</div>
+          <div class="timeline-desc">Pick 2–3 tricky parts (DB schema, caching layer, message queue, consistency). Go deep. Discuss trade-offs proactively.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 5 — 5 min</div>
+          <div class="timeline-title">Bottlenecks & Scale</div>
+          <div class="timeline-desc">Where does your system break at 10×? Discuss sharding, horizontal scaling, failover, monitoring, alerting.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(16,185,129,0.15)">🗂️</div>
+        <div>
+          <div class="section-title">Must-Practice HLD Problems</div>
+          <div class="section-sub">Cover these and you'll be ready for 90% of interviews</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔗 Foundational Systems</div>
+        <ul>
+          <li>URL Shortener (TinyURL) — core concepts, hashing, redirection</li>
+          <li>Rate Limiter — token bucket, sliding window, distributed state</li>
+          <li>Key-Value Store — LSM trees, consistent hashing, quorum reads</li>
+          <li>Unique ID Generator — Snowflake IDs, UUIDs, clock skew</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">📱 Product Systems</div>
+        <ul>
+          <li>Twitter / Instagram Feed — fanout on write vs read, timelines</li>
+          <li>WhatsApp / Slack — WebSockets, message ordering, delivery receipts</li>
+          <li>YouTube / Netflix — video encoding pipeline, CDN, adaptive streaming</li>
+          <li>Uber / Lyft — geo-indexing, real-time location, driver matching</li>
+          <li>Google Drive / Dropbox — chunking, deduplication, sync conflicts</li>
+          <li>Search Autocomplete — trie, typeahead, distributed indexing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(245,158,11,0.15)">📚</div>
+        <div>
+          <div class="section-title">Best Resources</div>
+        </div>
+      </div>
+      <div class="card">
+        <ul>
+          <li><strong style="color:#e2e8f0">Book:</strong> "System Design Interview" by Alex Xu (Vol 1 & 2)</li>
+          <li><strong style="color:#e2e8f0">Website:</strong> ByteByteGo.com — weekly system design breakdowns</li>
+          <li><strong style="color:#e2e8f0">YouTube:</strong> Gaurav Sen, ByteByteGo channel, Hussein Nasser</li>
+          <li><strong style="color:#e2e8f0">Blogs:</strong> Engineering blogs of Netflix, Uber, Airbnb, Discord</li>
+          <li><strong style="color:#e2e8f0">Practice:</strong> Excalidraw for drawing diagrams during mock interviews</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LOW LEVEL SYSTEM DESIGN -->
+  <div id="lld" class="tab-content">
+
+    <div class="highlight">
+      <div class="highlight-title">⚡ What is LLD?</div>
+      <p>Low Level Design focuses on <span class="emphasis">class design, OOP principles, and design patterns</span>. Think: "Design a Parking Lot", "Design Chess Game", "Design an Elevator System". It's about code structure, not infrastructure.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(124,58,237,0.15)">🧱</div>
+        <div>
+          <div class="section-title">OOP Principles — Nail These First</div>
+          <div class="section-sub">The foundation of every LLD answer</div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">SOLID Principles <span class="tag tag-purple">Must Know</span></div>
+          <ul>
+            <li><strong style="color:#c4b5fd">S</strong>ingle Responsibility — one class, one job</li>
+            <li><strong style="color:#c4b5fd">O</strong>pen/Closed — open to extend, closed to modify</li>
+            <li><strong style="color:#c4b5fd">L</strong>iskov Substitution — subclass is substitutable</li>
+            <li><strong style="color:#c4b5fd">I</strong>nterface Segregation — small, focused interfaces</li>
+            <li><strong style="color:#c4b5fd">D</strong>ependency Inversion — depend on abstractions</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">OOP Pillars <span class="tag tag-cyan">Must Know</span></div>
+          <ul>
+            <li>Encapsulation — hide internal state</li>
+            <li>Abstraction — expose only what's needed</li>
+            <li>Inheritance — reuse via is-a relationships</li>
+            <li>Polymorphism — one interface, many forms</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(6,182,212,0.15)">🎨</div>
+        <div>
+          <div class="section-title">Design Patterns to Know</div>
+          <div class="section-sub">GoF patterns that actually appear in interviews</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Creational <span class="tag tag-purple">High Frequency</span></div>
+        <ul>
+          <li><strong style="color:#e2e8f0">Singleton</strong> — Logger, Config, DB Connection pool</li>
+          <li><strong style="color:#e2e8f0">Factory / Abstract Factory</strong> — Payment processors, Notification types</li>
+          <li><strong style="color:#e2e8f0">Builder</strong> — Complex objects like Query builders, HTTP requests</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Structural <span class="tag tag-cyan">High Frequency</span></div>
+        <ul>
+          <li><strong style="color:#e2e8f0">Adapter</strong> — Wrap incompatible interfaces</li>
+          <li><strong style="color:#e2e8f0">Decorator</strong> — Pizza toppings, I/O streams, middleware</li>
+          <li><strong style="color:#e2e8f0">Facade</strong> — Simplify complex subsystems</li>
+          <li><strong style="color:#e2e8f0">Composite</strong> — File system tree, UI components</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Behavioral <span class="tag tag-amber">High Frequency</span></div>
+        <ul>
+          <li><strong style="color:#e2e8f0">Observer</strong> — Event systems, notifications, pub/sub</li>
+          <li><strong style="color:#e2e8f0">Strategy</strong> — Sorting algorithms, payment methods</li>
+          <li><strong style="color:#e2e8f0">Command</strong> — Undo/redo, task queues</li>
+          <li><strong style="color:#e2e8f0">State</strong> — Vending machine, traffic lights, order status</li>
+          <li><strong style="color:#e2e8f0">Template Method</strong> — Game loop, data processing pipelines</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(16,185,129,0.15)">📐</div>
+        <div>
+          <div class="section-title">LLD Interview Framework</div>
+          <div class="section-sub">The right approach in the interview room</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item done">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 1 — 3 min</div>
+          <div class="timeline-title">Gather Requirements</div>
+          <div class="timeline-desc">Functional: what actors exist? What actions can they perform? Non-functional: scale, concurrency, extensibility needs.</div>
+        </div>
+        <div class="timeline-item done">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 2 — 5 min</div>
+          <div class="timeline-title">Identify Entities & Relationships</div>
+          <div class="timeline-desc">List nouns = potential classes. List verbs = potential methods. Define is-a (inheritance) vs has-a (composition) relationships.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 3 — 5 min</div>
+          <div class="timeline-title">Design Class Diagram</div>
+          <div class="timeline-desc">Draw classes with attributes, methods, access modifiers. Show interfaces/abstract classes. Show associations and multiplicities.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 4 — 15 min</div>
+          <div class="timeline-title">Code the Core Classes</div>
+          <div class="timeline-desc">Write actual code for 2–3 key classes. Apply design patterns where natural. Show error handling and edge cases.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">STEP 5 — 5 min</div>
+          <div class="timeline-title">Walk Through a Use Case</div>
+          <div class="timeline-desc">Trace a complete user action through your design. Discuss extensibility: "If we add feature X, we only need to change Y."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(245,158,11,0.15)">🗂️</div>
+        <div>
+          <div class="section-title">Must-Practice LLD Problems</div>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">Classic Problems <span class="tag tag-purple">Start Here</span></div>
+          <ul>
+            <li>Parking Lot System</li>
+            <li>Library Management System</li>
+            <li>Hotel Booking System</li>
+            <li>ATM Machine</li>
+            <li>Vending Machine (State pattern)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Advanced Problems <span class="tag tag-red">FAANG Level</span></div>
+          <ul>
+            <li>Chess / Snakes & Ladders</li>
+            <li>Elevator System</li>
+            <li>Movie Ticket Booking (BookMyShow)</li>
+            <li>Food Delivery App (Swiggy)</li>
+            <li>Splitwise / Expense Tracker</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LEETCODE PLAN -->
+  <div id="lc" class="tab-content">
+
+    <div class="highlight">
+      <div class="highlight-title">⚡ The Right LeetCode Mindset</div>
+      <p>Don't grind randomly. Learn <span class="emphasis">patterns</span>, not solutions. One pattern unlocks dozens of problems. Quality > Quantity. 150 well-understood problems beats 500 memorized ones.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(124,58,237,0.15)">📅</div>
+        <div>
+          <div class="section-title">12-Week Structured Plan</div>
+          <div class="section-sub">2–3 hours/day, 5 days/week</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">WEEKS 1–2</div>
+          <div class="timeline-title">Arrays, Strings & Hashing</div>
+          <div class="timeline-desc">Two pointers, sliding window, prefix sums, hashmaps, frequency counts. Master: Two Sum, Valid Anagram, Longest Substring Without Repeat, Product Except Self.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">WEEKS 3–4</div>
+          <div class="timeline-title">Stacks, Queues & Linked Lists</div>
+          <div class="timeline-desc">Monotonic stack, deque tricks, fast/slow pointers, merge/reverse. Master: Valid Parentheses, Daily Temperatures, LRU Cache, Merge Two Lists.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">WEEKS 5–6</div>
+          <div class="timeline-title">Trees & Binary Search</div>
+          <div class="timeline-desc">DFS/BFS on trees, BST properties, binary search variants, level-order traversal. Master: LCA, Kth Largest, Validate BST, Construct from Preorder.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">WEEKS 7–8</div>
+          <div class="timeline-title">Graphs & Backtracking</div>
+          <div class="timeline-desc">BFS/DFS traversal, Union-Find, Topological sort, Dijkstra. Combinations/permutations via backtracking. Master: Number of Islands, Course Schedule, Word Search, Subsets.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">WEEKS 9–10</div>
+          <div class="timeline-title">Dynamic Programming</div>
+          <div class="timeline-desc">1D DP → 2D DP → knapsack variants → interval DP. Master: Climbing Stairs, Coin Change, Longest Common Subsequence, Edit Distance, House Robber.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">WEEKS 11–12</div>
+          <div class="timeline-title">Heaps, Tries & Advanced</div>
+          <div class="timeline-desc">Priority queues, top-K problems, trie construction, segment trees. Mock interviews daily. Master: Merge K Lists, Find Median, Word Search II.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(6,182,212,0.15)">🎯</div>
+        <div>
+          <div class="section-title">14 Core Patterns to Master</div>
+          <div class="section-sub">Recognize these → solve any problem</div>
+        </div>
+      </div>
+      <div class="pill-list">
+        <span class="pill">Sliding Window</span>
+        <span class="pill">Two Pointers</span>
+        <span class="pill">Fast & Slow Pointers</span>
+        <span class="pill">Merge Intervals</span>
+        <span class="pill">Cyclic Sort</span>
+        <span class="pill">In-place Reversal</span>
+        <span class="pill">Tree BFS</span>
+        <span class="pill">Tree DFS</span>
+        <span class="pill">Two Heaps</span>
+        <span class="pill">Subsets</span>
+        <span class="pill">Modified Binary Search</span>
+        <span class="pill">Bitwise XOR</span>
+        <span class="pill">Top K Elements</span>
+        <span class="pill">K-way Merge</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(16,185,129,0.15)">📊</div>
+        <div>
+          <div class="section-title">Topic Priority by Frequency</div>
+          <div class="section-sub">FAANG interview data</div>
+        </div>
+      </div>
+      <div class="card" style="padding: 20px 22px;">
+        <div class="progress-row">
+          <div class="progress-label">Arrays / Hashing</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:95%;background:linear-gradient(90deg,#7c3aed,#a78bfa)"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Trees / Graphs</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:88%;background:linear-gradient(90deg,#0891b2,#22d3ee)"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Dynamic Programming</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:80%;background:linear-gradient(90deg,#d97706,#fbbf24)"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Sliding Window</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:75%;background:linear-gradient(90deg,#059669,#34d399)"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Binary Search</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:70%;background:linear-gradient(90deg,#be185d,#f472b6)"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Linked Lists</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:65%;background:linear-gradient(90deg,#7c3aed,#a78bfa)"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Stack / Queue</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:60%;background:linear-gradient(90deg,#0891b2,#22d3ee)"></div></div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-label">Heap / Priority Q</div>
+          <div class="progress-bar"><div class="progress-fill" style="width:50%;background:linear-gradient(90deg,#d97706,#fbbf24)"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(245,158,11,0.15)">🧪</div>
+        <div>
+          <div class="section-title">Problem-Solving Protocol</div>
+          <div class="section-sub">Do this for EVERY problem</div>
+        </div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item done">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">BEFORE CODING</div>
+          <div class="timeline-title">Read → Examples → Edge Cases</div>
+          <div class="timeline-desc">Read the problem twice. Trace through 2 examples by hand. Ask: what if input is empty? Negative numbers? Duplicates?</div>
+        </div>
+        <div class="timeline-item done">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">THINK ALOUD</div>
+          <div class="timeline-title">Brute Force → Optimize</div>
+          <div class="timeline-desc">State the brute force O(n²) first. Then identify the bottleneck. Ask: can I use a hashmap? Sorting? Sliding window? Binary search?</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">CODING</div>
+          <div class="timeline-title">Clean Code, Talk as You Type</div>
+          <div class="timeline-desc">Use meaningful variable names. Write helper functions. Comment non-obvious logic. Don't go silent.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-week">AFTER CODING</div>
+          <div class="timeline-title">Trace → Complexity → Test</div>
+          <div class="timeline-desc">Manually trace your code with an example. State time and space complexity. Test edge cases out loud.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon" style="background:rgba(239,68,68,0.15)">🔥</div>
+        <div>
+          <div class="section-title">Neetcode 150 — The Gold Standard</div>
+        </div>
+      </div>
+      <div class="card">
+        <ul>
+          <li><strong style="color:#e2e8f0">neetcode.io</strong> — Free roadmap with video explanations for 150 curated problems</li>
+          <li><strong style="color:#e2e8f0">Blind 75</strong> — If short on time, focus on this subset first</li>
+          <li><strong style="color:#e2e8f0">LeetCode Lists</strong> — Company-tagged problems (Google, Meta, Amazon, etc.)</li>
+          <li><strong style="color:#e2e8f0">Mock Interviews</strong> — Pramp.com, interviewing.io for live practice</li>
+          <li><strong style="color:#e2e8f0">Spaced Repetition</strong> — Review solved problems after 3 days, 1 week, 2 weeks</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
