@@ -1,9 +1,9 @@
 # Interview Prep — Ashwanth Kumar Alagesan
 
 **Targeting:** AI Engineer · Forward Deployed Engineer · GenAI Software Engineer · SWE  
-**Level:** Mid (3 YOE) → Senior at big tech & startups  
-**Stack strengths:** Python, Go, microservices, AWS, Kafka, gRPC, ML (TF/Keras)  
-**Gaps to close:** DSA medium/hard, LLM/GenAI depth, ML system design
+**Level:** Mid-Senior (3 YOE, production GenAI at Fortune 500 scale)  
+**Stack strengths:** Python, LangChain, LangGraph, CrewAI, RAG, multi-agent, pgvector, AWS/Azure/GCP  
+**Gaps to close:** DSA medium/hard, ML system design interview format
 
 ---
 
@@ -189,17 +189,23 @@ Use **STAR format** (Situation, Task, Action, Result) for every answer.
 
 ---
 
-## Resume Gaps to Close
+## Resume Strengths (already strong — don't undersell these)
 
-Based on your current resume, AI/GenAI roles will expect to see:
+Your updated resume is well-positioned for AI Engineer and GenAI roles. These are your headline talking points:
 
-| Missing | Action |
-|---------|--------|
-| LLM / OpenAI API experience | Build a project using it |
-| Vector DB (Pinecone, Chroma) | Add to RAG project |
-| LangChain / LangGraph | Use in a project |
-| Hugging Face | Fine-tune a small model |
-| GenAI keywords in skills | Update resume skills section |
+| Strength | Proof point |
+|----------|-------------|
+| Production RAG at scale | 16 factories, 30% downtime reduction |
+| Enterprise GenAI deployment | 170,000+ employee chat platform |
+| Multi-agent systems | LangGraph + CrewAI, org-wide orchestration |
+| Hybrid search (BM25 + pgvector) | Fault code retrieval system |
+| Cost optimisation | 40% LLM token reduction via Redis caching |
+| Cross-cloud | AWS Bedrock, Azure AI, GCP Vertex AI |
+
+### Resume polish items (minor)
+- [ ] Add GitHub profile link (ashwanthkumar1007) to header
+- [ ] Quantify Interview Agent and PDF Agent projects if possible (users, usage metrics)
+- [ ] Consider adding Fine-tuning / LoRA to skills if you have any exposure
 
 ---
 
