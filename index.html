@@ -101,6 +101,7 @@
     padding: 6px;
     margin-bottom: 36px;
     animation: fadeUp 0.7s 0.1s ease both;
+    flex-wrap: wrap;
   }
 
   .tab {
@@ -116,6 +117,7 @@
     cursor: pointer;
     transition: all 0.25s;
     text-align: center;
+    min-width: 0;
   }
 
   .tab.active {
@@ -393,6 +395,232 @@
     color: #a78bfa;
     font-weight: 500;
   }
+
+  /* ===== DSA Reference Tab ===== */
+  .dsa-search-wrap {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .dsa-search {
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .dsa-search::placeholder { color: var(--muted); }
+
+  .dsa-search:focus { border-color: rgba(124,58,237,0.5); }
+
+  .dsa-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 15px;
+    pointer-events: none;
+  }
+
+  .dsa-section {
+    margin-bottom: 12px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .dsa-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .dsa-section-header:hover { background: var(--surface2); }
+
+  .dsa-section-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .dsa-section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #e2e8f0;
+    flex: 1;
+  }
+
+  .dsa-chevron {
+    color: var(--muted);
+    font-size: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .dsa-section.open > .dsa-section-header .dsa-chevron { transform: rotate(180deg); }
+
+  .dsa-section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .dsa-section.open > .dsa-section-body { max-height: 12000px; }
+
+  .dsa-section-body-inner { padding: 0 20px 16px; }
+
+  .dsa-subtopic {
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  .dsa-subtopic-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    cursor: pointer;
+    user-select: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #c4b5fd;
+    transition: background 0.2s;
+  }
+
+  .dsa-subtopic-header:hover { background: var(--surface2); }
+
+  .dsa-subtopic.open > .dsa-subtopic-header .dsa-chevron { transform: rotate(180deg); }
+
+  .dsa-subtopic-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .dsa-subtopic.open > .dsa-subtopic-body { max-height: 8000px; }
+
+  .dsa-subtopic-body-inner { padding: 0 16px 14px; }
+
+  .dsa-strategy {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    transition: border-color 0.2s;
+  }
+
+  .dsa-strategy:hover { border-color: rgba(124,58,237,0.3); }
+
+  .dsa-strategy:last-child { margin-bottom: 0; }
+
+  .dsa-strategy-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 4px;
+  }
+
+  .dsa-strategy-when {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .dsa-badges {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .complexity-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .complexity-badge.time { background: rgba(6,182,212,0.15); color: #22d3ee; }
+  .complexity-badge.space { background: rgba(245,158,11,0.15); color: #fbbf24; }
+
+  .dsa-steps {
+    list-style: none;
+    counter-reset: step;
+    margin-bottom: 10px;
+  }
+
+  .dsa-steps li {
+    counter-increment: step;
+    font-size: 12.5px;
+    color: #94a3b8;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+    margin-bottom: 2px;
+  }
+
+  .dsa-steps li::before {
+    content: counter(step) '.';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .dsa-problems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .problem-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: #a78bfa;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .problem-chip:hover {
+    background: rgba(124,58,237,0.15);
+    border-color: rgba(124,58,237,0.4);
+    color: #c4b5fd;
+  }
+
+  .dsa-hidden { display: none !important; }
 </style>
 </head>
 <body>
@@ -405,22 +633,23 @@
   </div>
 
   <div class="tabs">
-    <button class="tab active" onclick="showTab('hld')">🏗️ High Level Design</button>
-    <button class="tab" onclick="showTab('lld')">🔩 Low Level Design</button>
-    <button class="tab" onclick="showTab('lc')">💻 LeetCode Plan</button>
+    <button class="tab active" onclick="showTab('hld',this)">&#x1F3D7;&#xFE0F; High Level Design</button>
+    <button class="tab" onclick="showTab('lld',this)">&#x1F529; Low Level Design</button>
+    <button class="tab" onclick="showTab('lc',this)">&#x1F4BB; LeetCode Plan</button>
+    <button class="tab" onclick="showTab('dsa',this)">&#x1F4D6; DSA Reference</button>
   </div>
 
   <!-- HIGH LEVEL SYSTEM DESIGN -->
   <div id="hld" class="tab-content active">
 
     <div class="highlight">
-      <div class="highlight-title">⚡ What is HLD?</div>
+      <div class="highlight-title">&#x26A1; What is HLD?</div>
       <p>High Level Design focuses on the <span class="emphasis">architecture</span> of a large-scale distributed system — scalability, availability, reliability, and trade-offs. Think: "Design Twitter", "Design Netflix", "Design URL Shortener".</p>
     </div>
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(124,58,237,0.15)">🧠</div>
+        <div class="section-icon" style="background:rgba(124,58,237,0.15)">&#x1F9E0;</div>
         <div>
           <div class="section-title">Core Concepts to Master</div>
           <div class="section-sub">Non-negotiable fundamentals</div>
@@ -440,8 +669,8 @@
           <div class="card-title">Databases <span class="tag tag-purple">Tier 1</span></div>
           <ul>
             <li>SQL vs NoSQL trade-offs</li>
-            <li>Sharding & Partitioning</li>
-            <li>Read replicas & replication</li>
+            <li>Sharding &amp; Partitioning</li>
+            <li>Read replicas &amp; replication</li>
             <li>CAP theorem in practice</li>
           </ul>
         </div>
@@ -455,7 +684,7 @@
           </ul>
         </div>
         <div class="card">
-          <div class="card-title">Messaging & Queues <span class="tag tag-cyan">Tier 1</span></div>
+          <div class="card-title">Messaging &amp; Queues <span class="tag tag-cyan">Tier 1</span></div>
           <ul>
             <li>Kafka, RabbitMQ, SQS</li>
             <li>Pub/Sub vs message queues</li>
@@ -477,7 +706,7 @@
           <ul>
             <li>Rate limiting (Token bucket, Leaky bucket)</li>
             <li>Circuit breaker pattern</li>
-            <li>Idempotency & retries</li>
+            <li>Idempotency &amp; retries</li>
             <li>Distributed transactions (Saga)</li>
           </ul>
         </div>
@@ -486,7 +715,7 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(6,182,212,0.15)">📐</div>
+        <div class="section-icon" style="background:rgba(6,182,212,0.15)">&#x1F4D0;</div>
         <div>
           <div class="section-title">The HLD Interview Framework</div>
           <div class="section-sub">Follow this structure every time</div>
@@ -520,7 +749,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-week">STEP 5 — 5 min</div>
-          <div class="timeline-title">Bottlenecks & Scale</div>
+          <div class="timeline-title">Bottlenecks &amp; Scale</div>
           <div class="timeline-desc">Where does your system break at 10×? Discuss sharding, horizontal scaling, failover, monitoring, alerting.</div>
         </div>
       </div>
@@ -528,14 +757,14 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(16,185,129,0.15)">🗂️</div>
+        <div class="section-icon" style="background:rgba(16,185,129,0.15)">&#x1F5C2;&#xFE0F;</div>
         <div>
           <div class="section-title">Must-Practice HLD Problems</div>
           <div class="section-sub">Cover these and you'll be ready for 90% of interviews</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-title">🔗 Foundational Systems</div>
+        <div class="card-title">&#x1F517; Foundational Systems</div>
         <ul>
           <li>URL Shortener (TinyURL) — core concepts, hashing, redirection</li>
           <li>Rate Limiter — token bucket, sliding window, distributed state</li>
@@ -544,7 +773,7 @@
         </ul>
       </div>
       <div class="card">
-        <div class="card-title">📱 Product Systems</div>
+        <div class="card-title">&#x1F4F1; Product Systems</div>
         <ul>
           <li>Twitter / Instagram Feed — fanout on write vs read, timelines</li>
           <li>WhatsApp / Slack — WebSockets, message ordering, delivery receipts</li>
@@ -558,14 +787,14 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(245,158,11,0.15)">📚</div>
+        <div class="section-icon" style="background:rgba(245,158,11,0.15)">&#x1F4DA;</div>
         <div>
           <div class="section-title">Best Resources</div>
         </div>
       </div>
       <div class="card">
         <ul>
-          <li><strong style="color:#e2e8f0">Book:</strong> "System Design Interview" by Alex Xu (Vol 1 & 2)</li>
+          <li><strong style="color:#e2e8f0">Book:</strong> "System Design Interview" by Alex Xu (Vol 1 &amp; 2)</li>
           <li><strong style="color:#e2e8f0">Website:</strong> ByteByteGo.com — weekly system design breakdowns</li>
           <li><strong style="color:#e2e8f0">YouTube:</strong> Gaurav Sen, ByteByteGo channel, Hussein Nasser</li>
           <li><strong style="color:#e2e8f0">Blogs:</strong> Engineering blogs of Netflix, Uber, Airbnb, Discord</li>
@@ -580,13 +809,13 @@
   <div id="lld" class="tab-content">
 
     <div class="highlight">
-      <div class="highlight-title">⚡ What is LLD?</div>
+      <div class="highlight-title">&#x26A1; What is LLD?</div>
       <p>Low Level Design focuses on <span class="emphasis">class design, OOP principles, and design patterns</span>. Think: "Design a Parking Lot", "Design Chess Game", "Design an Elevator System". It's about code structure, not infrastructure.</p>
     </div>
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(124,58,237,0.15)">🧱</div>
+        <div class="section-icon" style="background:rgba(124,58,237,0.15)">&#x1F9F1;</div>
         <div>
           <div class="section-title">OOP Principles — Nail These First</div>
           <div class="section-sub">The foundation of every LLD answer</div>
@@ -617,7 +846,7 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(6,182,212,0.15)">🎨</div>
+        <div class="section-icon" style="background:rgba(6,182,212,0.15)">&#x1F3A8;</div>
         <div>
           <div class="section-title">Design Patterns to Know</div>
           <div class="section-sub">GoF patterns that actually appear in interviews</div>
@@ -654,7 +883,7 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(16,185,129,0.15)">📐</div>
+        <div class="section-icon" style="background:rgba(16,185,129,0.15)">&#x1F4D0;</div>
         <div>
           <div class="section-title">LLD Interview Framework</div>
           <div class="section-sub">The right approach in the interview room</div>
@@ -670,7 +899,7 @@
         <div class="timeline-item done">
           <div class="timeline-dot"></div>
           <div class="timeline-week">STEP 2 — 5 min</div>
-          <div class="timeline-title">Identify Entities & Relationships</div>
+          <div class="timeline-title">Identify Entities &amp; Relationships</div>
           <div class="timeline-desc">List nouns = potential classes. List verbs = potential methods. Define is-a (inheritance) vs has-a (composition) relationships.</div>
         </div>
         <div class="timeline-item">
@@ -696,7 +925,7 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(245,158,11,0.15)">🗂️</div>
+        <div class="section-icon" style="background:rgba(245,158,11,0.15)">&#x1F5C2;&#xFE0F;</div>
         <div>
           <div class="section-title">Must-Practice LLD Problems</div>
         </div>
@@ -715,7 +944,7 @@
         <div class="card">
           <div class="card-title">Advanced Problems <span class="tag tag-red">FAANG Level</span></div>
           <ul>
-            <li>Chess / Snakes & Ladders</li>
+            <li>Chess / Snakes &amp; Ladders</li>
             <li>Elevator System</li>
             <li>Movie Ticket Booking (BookMyShow)</li>
             <li>Food Delivery App (Swiggy)</li>
@@ -731,13 +960,13 @@
   <div id="lc" class="tab-content">
 
     <div class="highlight">
-      <div class="highlight-title">⚡ The Right LeetCode Mindset</div>
+      <div class="highlight-title">&#x26A1; The Right LeetCode Mindset</div>
       <p>Don't grind randomly. Learn <span class="emphasis">patterns</span>, not solutions. One pattern unlocks dozens of problems. Quality > Quantity. 150 well-understood problems beats 500 memorized ones.</p>
     </div>
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(124,58,237,0.15)">📅</div>
+        <div class="section-icon" style="background:rgba(124,58,237,0.15)">&#x1F4C5;</div>
         <div>
           <div class="section-title">12-Week Structured Plan</div>
           <div class="section-sub">2–3 hours/day, 5 days/week</div>
@@ -747,25 +976,25 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-week">WEEKS 1–2</div>
-          <div class="timeline-title">Arrays, Strings & Hashing</div>
+          <div class="timeline-title">Arrays, Strings &amp; Hashing</div>
           <div class="timeline-desc">Two pointers, sliding window, prefix sums, hashmaps, frequency counts. Master: Two Sum, Valid Anagram, Longest Substring Without Repeat, Product Except Self.</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-week">WEEKS 3–4</div>
-          <div class="timeline-title">Stacks, Queues & Linked Lists</div>
+          <div class="timeline-title">Stacks, Queues &amp; Linked Lists</div>
           <div class="timeline-desc">Monotonic stack, deque tricks, fast/slow pointers, merge/reverse. Master: Valid Parentheses, Daily Temperatures, LRU Cache, Merge Two Lists.</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-week">WEEKS 5–6</div>
-          <div class="timeline-title">Trees & Binary Search</div>
+          <div class="timeline-title">Trees &amp; Binary Search</div>
           <div class="timeline-desc">DFS/BFS on trees, BST properties, binary search variants, level-order traversal. Master: LCA, Kth Largest, Validate BST, Construct from Preorder.</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-week">WEEKS 7–8</div>
-          <div class="timeline-title">Graphs & Backtracking</div>
+          <div class="timeline-title">Graphs &amp; Backtracking</div>
           <div class="timeline-desc">BFS/DFS traversal, Union-Find, Topological sort, Dijkstra. Combinations/permutations via backtracking. Master: Number of Islands, Course Schedule, Word Search, Subsets.</div>
         </div>
         <div class="timeline-item">
@@ -777,7 +1006,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-week">WEEKS 11–12</div>
-          <div class="timeline-title">Heaps, Tries & Advanced</div>
+          <div class="timeline-title">Heaps, Tries &amp; Advanced</div>
           <div class="timeline-desc">Priority queues, top-K problems, trie construction, segment trees. Mock interviews daily. Master: Merge K Lists, Find Median, Word Search II.</div>
         </div>
       </div>
@@ -785,7 +1014,7 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(6,182,212,0.15)">🎯</div>
+        <div class="section-icon" style="background:rgba(6,182,212,0.15)">&#x1F3AF;</div>
         <div>
           <div class="section-title">14 Core Patterns to Master</div>
           <div class="section-sub">Recognize these → solve any problem</div>
@@ -794,7 +1023,7 @@
       <div class="pill-list">
         <span class="pill">Sliding Window</span>
         <span class="pill">Two Pointers</span>
-        <span class="pill">Fast & Slow Pointers</span>
+        <span class="pill">Fast &amp; Slow Pointers</span>
         <span class="pill">Merge Intervals</span>
         <span class="pill">Cyclic Sort</span>
         <span class="pill">In-place Reversal</span>
@@ -811,7 +1040,7 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(16,185,129,0.15)">📊</div>
+        <div class="section-icon" style="background:rgba(16,185,129,0.15)">&#x1F4CA;</div>
         <div>
           <div class="section-title">Topic Priority by Frequency</div>
           <div class="section-sub">FAANG interview data</div>
@@ -855,7 +1084,7 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(245,158,11,0.15)">🧪</div>
+        <div class="section-icon" style="background:rgba(245,158,11,0.15)">&#x1F9EA;</div>
         <div>
           <div class="section-title">Problem-Solving Protocol</div>
           <div class="section-sub">Do this for EVERY problem</div>
@@ -891,7 +1120,7 @@
 
     <div class="section">
       <div class="section-header">
-        <div class="section-icon" style="background:rgba(239,68,68,0.15)">🔥</div>
+        <div class="section-icon" style="background:rgba(239,68,68,0.15)">&#x1F525;</div>
         <div>
           <div class="section-title">Neetcode 150 — The Gold Standard</div>
         </div>
@@ -909,14 +1138,1663 @@
 
   </div>
 
+  <!-- DSA REFERENCE -->
+  <div id="dsa" class="tab-content">
+
+    <div class="highlight">
+      <div class="highlight-title">&#x26A1; Quick-Refresh DSA Cheat Sheet</div>
+      <p>A comprehensive reference of <span class="emphasis">strategies, complexities, and classic problems</span> organized by data structure. Expand any section to review the pattern right before your interview.</p>
+    </div>
+
+    <div class="dsa-search-wrap">
+      <span class="dsa-search-icon">&#x1F50D;</span>
+      <input type="text" id="dsaSearch" class="dsa-search" placeholder="Search strategies, patterns, or problems..." oninput="filterDsa()">
+    </div>
+
+    <!-- ==================== 1. ARRAYS ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(124,58,237,0.15)">&#x1F522;</div>
+        <div class="dsa-section-title">Arrays</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- Subarrays -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Subarrays</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Sliding Window</div>
+              <div class="dsa-strategy-when">Use when the problem involves a contiguous subarray with a constraint on sum, length, or character count. Fixed-size: move window by 1 each step. Variable-size: shrink left when constraint is violated.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1)–O(k) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Initialize left pointer and window state (sum, count map, etc.)</li>
+                <li>Expand right pointer one element at a time</li>
+                <li>If constraint violated, shrink from left until valid</li>
+                <li>Update result at each valid window state</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=maximum+sum+subarray+of+size+k" target="_blank">Max Sum Subarray of Size K</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+substring+without+repeating" target="_blank">Longest Substring Without Repeats</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=minimum+window+substring" target="_blank">Minimum Window Substring</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=fruit+into+baskets" target="_blank">Fruits Into Baskets</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Two Pointers</div>
+              <div class="dsa-strategy-when">Use on sorted arrays for pairs/triplets summing to a target. Place l=0, r=n-1, move based on sum comparison.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Sort array if not already sorted</li>
+                <li>Place left at start, right at end</li>
+                <li>If sum &lt; target, move left right; if sum &gt; target, move right left</li>
+                <li>For 3Sum, fix one element and run two pointers on the rest</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=two+sum+sorted" target="_blank">Two Sum (Sorted)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=3sum" target="_blank">Three Sum</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=container+with+most+water" target="_blank">Container With Most Water</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=trapping+rain+water" target="_blank">Trapping Rain Water</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Kadane's Algorithm</div>
+              <div class="dsa-strategy-when">Classic max subarray sum. curr = max(x, curr+x) at each element; track global best. For max product, track both min and max.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Initialize currentMax = arr[0], globalMax = arr[0]</li>
+                <li>For each element: currentMax = max(element, currentMax + element)</li>
+                <li>Update globalMax = max(globalMax, currentMax)</li>
+                <li>For product variant: track currentMin too (negative × negative = positive)</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=maximum+subarray" target="_blank">Maximum Subarray (LC 53)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=maximum+product+subarray" target="_blank">Maximum Product Subarray</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=best+time+to+buy+and+sell+stock" target="_blank">Best Time to Buy/Sell Stock</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=maximum+sum+circular+subarray" target="_blank">Circular Subarray Max Sum</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Prefix Sum + Hash Map</div>
+              <div class="dsa-strategy-when">Build running sums; if prefix[i] - prefix[j] = k, subarray [j+1..i] has sum k. Store prefix counts in a hash map for O(1) lookup.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Initialize prefix = 0 and hashmap {0: 1}</li>
+                <li>For each element, add to prefix sum</li>
+                <li>Check if (prefix - k) exists in map → add its count to result</li>
+                <li>Store current prefix count in map</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=subarray+sum+equals+k" target="_blank">Subarray Sum Equals K (LC 560)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+subarray+with+sum" target="_blank">Longest Subarray With 0 Sum</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=contiguous+array" target="_blank">Binary Array Equal 0s and 1s</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=subarray+sums+divisible+by+k" target="_blank">Count Subarrays With Even Sum</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Divide &amp; Conquer</div>
+              <div class="dsa-strategy-when">Split at midpoint, solve each half recursively, compute best cross-midpoint subarray. Useful for counting inversions or range-sum queries.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n log n) time</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Split array at midpoint into left and right halves</li>
+                <li>Recursively solve for each half</li>
+                <li>Compute best subarray crossing the midpoint (expand from mid both ways)</li>
+                <li>Return max of left, right, and crossing results</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=maximum+subarray" target="_blank">Maximum Subarray (D&amp;C)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=count+of+smaller+numbers+after+self" target="_blank">Count Inversions (LC 315)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=reverse+pairs" target="_blank">Reverse Pairs</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=count+of+range+sum" target="_blank">Count of Range Sum</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Dynamic Programming</div>
+              <div class="dsa-strategy-when">dp[i] = best subarray ending at index i. Kadane's is the 1D DP case. Generalizes to 2D for substrings.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n)–O(n&#xB2;) time</span>
+                <span class="complexity-badge space">O(n) or O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Define dp[i] as the optimal value for subarray ending at index i</li>
+                <li>Write recurrence: dp[i] = f(dp[i-1], arr[i])</li>
+                <li>Handle base case dp[0] = arr[0]</li>
+                <li>Track global optimum across all dp values</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+increasing+subarray" target="_blank">Longest Increasing Subarray</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=number+of+subarrays+with+bounded+maximum" target="_blank">Subarrays With Bounded Max</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=distinct+subsequences" target="_blank">Distinct Subarrays Count</a>
+              </div>
+            </div>
+
+          </div></div>
+        </div>
+
+        <!-- Sorting -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Sorting</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Quick Sort</div>
+              <div class="dsa-strategy-when">Use when average O(n log n) is acceptable and in-place sorting is preferred. Unstable. Best general-purpose sort; avoid on nearly-sorted data.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n log n) avg, O(n&#xB2;) worst</span>
+                <span class="complexity-badge space">O(log n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Pick a pivot (median-of-three or random)</li>
+                <li>Partition: elements &lt; pivot go left, &gt; pivot go right</li>
+                <li>Recursively sort left and right partitions</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=sort+an+array" target="_blank">Sort an Array</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=sort+colors" target="_blank">Sort Colors (Dutch National Flag)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=kth+largest+element" target="_blank">Kth Largest Element</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Merge Sort</div>
+              <div class="dsa-strategy-when">Use when stable sort is needed or sorting linked lists. Guaranteed O(n log n) worst case. Preferred for external sorting.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n log n) time</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Divide array in half recursively until single elements</li>
+                <li>Merge sorted halves by comparing elements one-by-one</li>
+                <li>Copy merged result back</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=sort+an+array" target="_blank">Sort an Array</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=merge+sorted+array" target="_blank">Merge Sorted Array</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=count+of+smaller+numbers+after+self" target="_blank">Count Smaller After Self</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Counting Sort</div>
+              <div class="dsa-strategy-when">Use when values are integers in a known small range [0, k]. O(n) when k is small. Not comparison-based.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n + k) time</span>
+                <span class="complexity-badge space">O(k) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Count frequency of each value in a counts array</li>
+                <li>Compute prefix sums of counts for stable placement</li>
+                <li>Place each element at its computed position</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=sort+colors" target="_blank">Sort Colors</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=maximum+gap" target="_blank">Maximum Gap</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=h-index" target="_blank">H-Index</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Cyclic Sort</div>
+              <div class="dsa-strategy-when">Use when array contains numbers in range [1, n] or [0, n]. Each number has exactly one correct position. O(n) swaps to place all correctly.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>For each index i, while arr[i] is not at its correct position, swap it there</li>
+                <li>After sorting, scan for mismatches to find missing/duplicate numbers</li>
+                <li>Elements already in place are skipped in O(1)</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=missing+number" target="_blank">Missing Number</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+all+duplicates" target="_blank">Find All Duplicates</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=first+missing+positive" target="_blank">First Missing Positive</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+the+duplicate+number" target="_blank">Find the Duplicate Number</a>
+              </div>
+            </div>
+
+          </div></div>
+        </div>
+
+        <!-- Searching -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Searching</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Standard Binary Search</div>
+              <div class="dsa-strategy-when">Use when array is sorted and you need to find a target or insertion point. Halves the search space each step.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(log n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Set lo = 0, hi = n - 1</li>
+                <li>Compute mid = lo + (hi - lo) / 2</li>
+                <li>If arr[mid] == target, return; if less, lo = mid + 1; else hi = mid - 1</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=binary+search" target="_blank">Binary Search (LC 704)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=search+insert+position" target="_blank">Search Insert Position</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=guess+number" target="_blank">Guess Number Higher or Lower</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Left / Right Boundary Search</div>
+              <div class="dsa-strategy-when">Use when finding first or last occurrence of target in sorted array with duplicates. Modify binary search to continue after finding target.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(log n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>For left boundary: when arr[mid] == target, set hi = mid - 1 and record</li>
+                <li>For right boundary: when arr[mid] == target, set lo = mid + 1 and record</li>
+                <li>Return recorded position (or -1 if never found)</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+first+and+last+position" target="_blank">First and Last Position (LC 34)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=count+negative+numbers" target="_blank">Count Negatives in Sorted Matrix</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=search+a+2d+matrix" target="_blank">Search a 2D Matrix</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Rotated Array Search</div>
+              <div class="dsa-strategy-when">Use when a sorted array has been rotated and you need to find a target or the minimum element.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(log n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Compute mid; determine which half [lo..mid] or [mid..hi] is sorted</li>
+                <li>Check if target falls within the sorted half</li>
+                <li>If yes, search that half; otherwise search the other half</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=search+in+rotated+sorted+array" target="_blank">Search in Rotated Array (LC 33)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+minimum+in+rotated" target="_blank">Find Min in Rotated Array</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=search+in+rotated+sorted+array+ii" target="_blank">Rotated Array II (with dups)</a>
+              </div>
+            </div>
+
+          </div></div>
+        </div>
+
+        <!-- Other Patterns -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Other Patterns</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Frequency Map / Hash Counting</div>
+              <div class="dsa-strategy-when">Use when counting occurrences, detecting duplicates, or finding mode/majority elements. Hash map trades space for O(1) lookups.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Iterate array, count each element in a hash map</li>
+                <li>Query map for the required property (most frequent, pairs, etc.)</li>
+                <li>For constant-space alternative, consider Boyer-Moore voting</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=two+sum" target="_blank">Two Sum</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=top+k+frequent+elements" target="_blank">Top K Frequent Elements</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=group+anagrams" target="_blank">Group Anagrams</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=majority+element" target="_blank">Majority Element</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">In-place Manipulation</div>
+              <div class="dsa-strategy-when">Use when modifying an array without extra space. Leverage indices as implicit storage, or overwrite from one end.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Use a write pointer to track where next valid element goes</li>
+                <li>Iterate with read pointer, copy valid elements to write position</li>
+                <li>For rotations, use reverse trick: reverse whole, reverse parts</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=remove+duplicates+from+sorted+array" target="_blank">Remove Duplicates (Sorted)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=move+zeroes" target="_blank">Move Zeroes</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=rotate+array" target="_blank">Rotate Array</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=product+of+array+except+self" target="_blank">Product Except Self</a>
+              </div>
+            </div>
+
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+    <!-- ==================== 2. STRINGS ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(6,182,212,0.15)">&#x1F524;</div>
+        <div class="dsa-section-title">Strings</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- Sliding Window on Strings -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Sliding Window on Strings</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Variable-Size String Window</div>
+              <div class="dsa-strategy-when">Use when finding substrings with character-based constraints (unique chars, at most k distinct, anagram match). Maintain char frequency map in window.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(k) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Expand right pointer, add char to frequency map</li>
+                <li>While window violates constraint, shrink from left</li>
+                <li>Track best valid window length or start position</li>
+                <li>For fixed pattern match, compare window map with pattern map</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+substring+without+repeating" target="_blank">Longest Substring No Repeats</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=minimum+window+substring" target="_blank">Minimum Window Substring</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+repeating+character+replacement" target="_blank">Longest Repeating Char Replace</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=permutation+in+string" target="_blank">Permutation in String</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Two Pointers on Strings -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Two Pointers on Strings</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Converging Pointers</div>
+              <div class="dsa-strategy-when">Use for palindrome checks, string reversals, or comparing characters from both ends. Skip non-alphanumeric for "valid palindrome" variants.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Place left at index 0, right at end</li>
+                <li>Compare characters, move inward</li>
+                <li>For palindrome II, try skipping left or right on mismatch</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=valid+palindrome" target="_blank">Valid Palindrome</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=valid+palindrome+ii" target="_blank">Valid Palindrome II</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=reverse+string" target="_blank">Reverse String</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=reverse+words+in+a+string" target="_blank">Reverse Words in a String</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Hashing / Anagram Detection -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Hashing / Anagram Detection</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Character Frequency Matching</div>
+              <div class="dsa-strategy-when">Use to detect anagrams, group words by character signature, or find pattern occurrences. Fixed 26-char array gives O(1) space for lowercase.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1) space (26 chars)</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Build frequency array/map of pattern</li>
+                <li>For grouping: sort chars or use frequency signature as key</li>
+                <li>For sliding: add right char, remove left char, compare with pattern</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=valid+anagram" target="_blank">Valid Anagram</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=group+anagrams" target="_blank">Group Anagrams</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+all+anagrams" target="_blank">Find All Anagrams in String</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=ransom+note" target="_blank">Ransom Note</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- KMP / Rabin-Karp -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>KMP / Rabin-Karp Pattern Matching</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">KMP (Knuth-Morris-Pratt)</div>
+              <div class="dsa-strategy-when">Use for exact pattern matching in O(n+m) without backtracking. Builds a failure function to skip redundant comparisons.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n + m) time</span>
+                <span class="complexity-badge space">O(m) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Build prefix/failure array: lps[i] = length of longest proper prefix that is also suffix of pattern[0..i]</li>
+                <li>Scan text with two pointers; on mismatch, jump pattern pointer using lps array</li>
+                <li>On full match, record position and continue using lps</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+the+index+of+the+first+occurrence" target="_blank">Implement strStr</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=repeated+substring+pattern" target="_blank">Repeated Substring Pattern</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=shortest+palindrome" target="_blank">Shortest Palindrome</a>
+              </div>
+            </div>
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Rabin-Karp (Rolling Hash)</div>
+              <div class="dsa-strategy-when">Use for multi-pattern matching or when you need to compare many substrings quickly. Rolling hash avoids recomputing from scratch.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) average</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Compute hash of pattern</li>
+                <li>Roll hash across text: add new char, remove old char in O(1)</li>
+                <li>On hash match, verify characters to avoid false positives</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=repeated+dna+sequences" target="_blank">Repeated DNA Sequences</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+duplicate+substring" target="_blank">Longest Duplicate Substring</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Trie-based String Problems -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Trie-based String Problems</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Trie for Prefix Lookups</div>
+              <div class="dsa-strategy-when">Use when doing many prefix-based lookups over a dictionary of words. Each node stores children and end-of-word flag.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(L) per operation</span>
+                <span class="complexity-badge space">O(N &times; L) total</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Build trie by inserting words char-by-char</li>
+                <li>Search by following child pointers for each character</li>
+                <li>For prefix queries, check node exists without requiring isEnd</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=implement+trie" target="_blank">Implement Trie (LC 208)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=replace+words" target="_blank">Replace Words</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+common+prefix" target="_blank">Longest Common Prefix</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+    <!-- ==================== 3. STACKS & QUEUES ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(245,158,11,0.15)">&#x1F4DA;</div>
+        <div class="dsa-section-title">Stacks &amp; Queues</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- Monotonic Stack -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Monotonic Stack</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Next Greater / Smaller Element</div>
+              <div class="dsa-strategy-when">Use when finding the next greater or smaller element for each position. Stack maintains decreasing (or increasing) order of unresolved elements.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Iterate array left-to-right (or right-to-left)</li>
+                <li>Pop stack while top violates monotonic property vs current</li>
+                <li>For each popped element, current is its answer</li>
+                <li>Push current index/value onto stack</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=next+greater+element" target="_blank">Next Greater Element I &amp; II</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=daily+temperatures" target="_blank">Daily Temperatures</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=largest+rectangle+in+histogram" target="_blank">Largest Rectangle in Histogram</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=trapping+rain+water" target="_blank">Trapping Rain Water</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Monotonic Deque -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Monotonic Deque</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Sliding Window Maximum / Minimum</div>
+              <div class="dsa-strategy-when">Use when finding max or min in every window of size k. Deque stores indices in monotonically decreasing (for max) order.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(k) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Maintain deque of indices; front is always the window max</li>
+                <li>Remove indices from back that are smaller than current element</li>
+                <li>Remove front if it falls outside the window</li>
+                <li>Front of deque is the answer for the current window</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=sliding+window+maximum" target="_blank">Sliding Window Maximum (LC 239)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=shortest+subarray+with+sum+at+least+k" target="_blank">Shortest Subarray With Sum &ge; K</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+continuous+subarray" target="_blank">Longest Subarray With Abs Diff</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Stack for Expression Evaluation -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Stack for Expression Evaluation</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Parentheses &amp; Expression Parsing</div>
+              <div class="dsa-strategy-when">Use for matching brackets, evaluating postfix/infix expressions, or decoding nested strings. Push on open, process on close.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Push opening brackets or operands onto stack</li>
+                <li>On closing bracket or operator, pop and evaluate/match</li>
+                <li>For nested patterns (e.g., "3[a2[c]]"), push context and recurse</li>
+                <li>Final result is on top of stack (or is the remaining string)</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=valid+parentheses" target="_blank">Valid Parentheses</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=evaluate+reverse+polish" target="_blank">Eval Reverse Polish Notation</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=basic+calculator" target="_blank">Basic Calculator I &amp; II</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=decode+string" target="_blank">Decode String</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Queue / BFS Patterns -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Queue / BFS Patterns</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">BFS with Queue</div>
+              <div class="dsa-strategy-when">Use for level-order tree traversal or shortest path in unweighted graphs. Processes nodes layer by layer.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(V + E) time</span>
+                <span class="complexity-badge space">O(V) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Enqueue start node(s), mark visited</li>
+                <li>Process all nodes at current level (loop over queue size)</li>
+                <li>For each node, enqueue unvisited neighbors</li>
+                <li>Increment level/distance counter between layers</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=binary+tree+level+order" target="_blank">Level Order Traversal</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=rotting+oranges" target="_blank">Rotting Oranges</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=word+ladder" target="_blank">Word Ladder</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=open+the+lock" target="_blank">Open the Lock</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Priority Queue / Heap -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Priority Queue / Heap</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Heap for Top-K / Streaming</div>
+              <div class="dsa-strategy-when">Use when maintaining K best elements from a stream, or merging K sorted sequences. Min-heap of size k for "k largest" problems.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n log k) time</span>
+                <span class="complexity-badge space">O(k) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Insert elements into a min-heap (for k largest) or max-heap (for k smallest)</li>
+                <li>When heap exceeds size k, pop the root</li>
+                <li>After processing all elements, heap contains the top-k</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=kth+largest+element" target="_blank">Kth Largest Element</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=top+k+frequent" target="_blank">Top K Frequent Elements</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=merge+k+sorted" target="_blank">Merge K Sorted Lists</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+median+from+data+stream" target="_blank">Find Median From Data Stream</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+    <!-- ==================== 4. TREES & GRAPHS ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(16,185,129,0.15)">&#x1F333;</div>
+        <div class="dsa-section-title">Trees &amp; Graphs</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- Tree Traversals -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Tree Traversals</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Inorder / Preorder / Postorder</div>
+              <div class="dsa-strategy-when">Fundamental tree traversals. Inorder on BST gives sorted order. Preorder for serialization. Postorder for bottom-up computation. Iterative uses explicit stack.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(h) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Recursive: base case null, recurse left/right with visit at correct position</li>
+                <li>Iterative inorder: push all lefts, pop and visit, then go right</li>
+                <li>Iterative preorder: visit node, push right then left child</li>
+                <li>Iterative postorder: use two-stack method or reverse modified preorder</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=binary+tree+inorder" target="_blank">Inorder Traversal</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=binary+tree+preorder" target="_blank">Preorder Traversal</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=binary+tree+postorder" target="_blank">Postorder Traversal</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=construct+binary+tree+from+preorder+and+inorder" target="_blank">Construct from Preorder+Inorder</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- BFS -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>BFS (Level-Order / Shortest Path)</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Level-Order / Shortest Path BFS</div>
+              <div class="dsa-strategy-when">Use for level-by-level processing in trees or shortest path in unweighted graphs. Queue processes nodes in order of distance from source.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(V + E) time</span>
+                <span class="complexity-badge space">O(V) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Enqueue root/source, mark visited</li>
+                <li>Process level: loop over current queue size, add children/neighbors</li>
+                <li>Track level number for depth, zigzag, or bottom-up order</li>
+                <li>For shortest path, distance = level when target is first found</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=binary+tree+level+order" target="_blank">Level Order Traversal</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=binary+tree+zigzag" target="_blank">Zigzag Level Order</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=minimum+depth+of+binary+tree" target="_blank">Minimum Depth of Tree</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=shortest+path+in+binary+matrix" target="_blank">Shortest Path in Binary Matrix</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- DFS -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>DFS (Path Finding / Components / Cycles)</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">DFS Traversal</div>
+              <div class="dsa-strategy-when">Use for exploring all paths, detecting cycles, counting connected components, or any problem needing full graph/tree exploration.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(V + E) time</span>
+                <span class="complexity-badge space">O(V) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Visit node, mark as visited (or "in-progress" for cycle detection)</li>
+                <li>Recurse on all unvisited neighbors</li>
+                <li>For cycle detection in directed graphs, use 3-state coloring (white/gray/black)</li>
+                <li>Backtrack by restoring state if needed (e.g., path-finding)</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=number+of+islands" target="_blank">Number of Islands</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=path+sum" target="_blank">Path Sum</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=clone+graph" target="_blank">Clone Graph</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=course+schedule" target="_blank">Course Schedule (Cycle)</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Binary Search Tree -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Binary Search Tree</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">BST Operations</div>
+              <div class="dsa-strategy-when">Use BST property (left &lt; root &lt; right) for O(log n) search, insert, delete. Inorder traversal yields sorted sequence.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(h) per operation</span>
+                <span class="complexity-badge space">O(n) for tree</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Search: compare target with node, go left if smaller, right if larger</li>
+                <li>Insert: search for position, create node at null spot</li>
+                <li>Delete: 3 cases — leaf (remove), one child (replace), two children (swap with inorder successor then delete)</li>
+                <li>Validate: inorder must be strictly increasing, or pass min/max bounds recursively</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=validate+binary+search+tree" target="_blank">Validate BST</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=kth+smallest+element+in+a+bst" target="_blank">Kth Smallest in BST</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=delete+node+in+a+bst" target="_blank">Delete Node in BST</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=convert+sorted+array+to+binary+search+tree" target="_blank">Sorted Array to BST</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Lowest Common Ancestor -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Lowest Common Ancestor</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">LCA via Recursion</div>
+              <div class="dsa-strategy-when">Use when finding the lowest shared ancestor of two nodes. For BST, leverage ordering. For general tree, use post-order DFS.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(h) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>If current node is null or equals p or q, return it</li>
+                <li>Recurse on left and right subtrees</li>
+                <li>If both return non-null, current node is the LCA</li>
+                <li>If only one is non-null, propagate that one up</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=lowest+common+ancestor+of+a+binary+tree" target="_blank">LCA of Binary Tree (LC 236)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=lowest+common+ancestor+of+a+binary+search+tree" target="_blank">LCA of BST (LC 235)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=lowest+common+ancestor+deepest+leaves" target="_blank">LCA of Deepest Leaves</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Graph Algorithms -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Graph Algorithms</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Topological Sort (Kahn's BFS)</div>
+              <div class="dsa-strategy-when">Use for dependency ordering in DAGs. If a cycle exists, topological sort is impossible (detects cycles). Also solvable via DFS post-order.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(V + E) time</span>
+                <span class="complexity-badge space">O(V) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Compute in-degree for each node</li>
+                <li>Enqueue all zero-degree nodes</li>
+                <li>Process queue: for each node, reduce neighbors' in-degrees</li>
+                <li>If new in-degree = 0, enqueue; if result &lt; V nodes, cycle exists</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=course+schedule" target="_blank">Course Schedule</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=course+schedule+ii" target="_blank">Course Schedule II</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=alien+dictionary" target="_blank">Alien Dictionary</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Union-Find / Disjoint Set Union</div>
+              <div class="dsa-strategy-when">Use for dynamic connectivity queries, counting components, and detecting cycles in undirected graphs. Near O(1) per operation with path compression + union by rank.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(&#x3B1;(n)) per op</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Initialize parent[i] = i, rank[i] = 0</li>
+                <li>Find: follow parent pointers with path compression (point to root)</li>
+                <li>Union: merge smaller-rank tree under larger-rank root</li>
+                <li>Connected: check if find(a) == find(b)</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=number+of+connected+components" target="_blank">Connected Components</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=redundant+connection" target="_blank">Redundant Connection</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=accounts+merge" target="_blank">Accounts Merge</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=most+stones+removed" target="_blank">Most Stones Removed</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Dijkstra's Algorithm</div>
+              <div class="dsa-strategy-when">Use for shortest path in weighted graphs with non-negative edges. Priority queue greedily picks the closest unvisited node.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O((V+E) log V) time</span>
+                <span class="complexity-badge space">O(V) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Initialize dist[source] = 0, all others = infinity</li>
+                <li>Push (0, source) into min-priority queue</li>
+                <li>Pop minimum, skip if already settled, relax all edges</li>
+                <li>If neighbor's new dist &lt; current dist, update and push</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=network+delay+time" target="_blank">Network Delay Time</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=path+with+minimum+effort" target="_blank">Path With Minimum Effort</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=cheapest+flights+within+k+stops" target="_blank">Cheapest Flights Within K Stops</a>
+              </div>
+            </div>
+
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Bellman-Ford</div>
+              <div class="dsa-strategy-when">Use when graph has negative-weight edges. Slower than Dijkstra but handles negatives. Can detect negative cycles.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(V &times; E) time</span>
+                <span class="complexity-badge space">O(V) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Initialize dist[source] = 0, all others = infinity</li>
+                <li>Relax all edges V-1 times</li>
+                <li>On Vth pass, if any edge still relaxes, negative cycle exists</li>
+                <li>For K-stops constraint, only relax from previous round's distances</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=cheapest+flights+within+k+stops" target="_blank">Cheapest Flights (K stops)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=negative+weight+cycle" target="_blank">Negative Cycle Detection</a>
+              </div>
+            </div>
+
+          </div></div>
+        </div>
+
+        <!-- Grid Problems -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Grid Problems</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Grid DFS / BFS</div>
+              <div class="dsa-strategy-when">Treat grid as a graph: each cell is a node with 4 (or 8) neighbors. Use DFS/BFS for connected components, flood fill, or shortest distance.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(m &times; n) time</span>
+                <span class="complexity-badge space">O(m &times; n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Iterate through grid, on unvisited target cell start DFS/BFS</li>
+                <li>Mark cells visited (modify grid or use visited set)</li>
+                <li>Explore 4 directions, check bounds and visit conditions</li>
+                <li>Count components, compute distances, or transform cells</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=number+of+islands" target="_blank">Number of Islands</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=flood+fill" target="_blank">Flood Fill</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=01+matrix" target="_blank">01 Matrix</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=surrounded+regions" target="_blank">Surrounded Regions</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=pacific+atlantic+water+flow" target="_blank">Pacific Atlantic Water Flow</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+    <!-- ==================== 5. LINKED LISTS ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(239,68,68,0.15)">&#x1F517;</div>
+        <div class="dsa-section-title">Linked Lists</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- Fast & Slow Pointers -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Fast &amp; Slow Pointers</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Floyd's Cycle Detection / Middle Node</div>
+              <div class="dsa-strategy-when">Use when detecting cycles, finding the cycle start, or locating the middle element. Slow moves 1 step, fast moves 2 steps.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Initialize slow = head, fast = head</li>
+                <li>Move slow by 1, fast by 2 each step</li>
+                <li>If they meet, cycle exists; to find start, reset one to head and move both by 1</li>
+                <li>For middle: when fast reaches end, slow is at the middle</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=linked+list+cycle" target="_blank">Linked List Cycle</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=linked+list+cycle+ii" target="_blank">Linked List Cycle II</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=middle+of+the+linked+list" target="_blank">Middle of Linked List</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=palindrome+linked+list" target="_blank">Palindrome Linked List</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- In-place Reversal -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>In-place Reversal</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Reverse Linked List</div>
+              <div class="dsa-strategy-when">Use when reversing all or part of a linked list. Track prev, curr, next pointers and reassign links.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Initialize prev = null, curr = head</li>
+                <li>Save next = curr.next</li>
+                <li>Point curr.next = prev</li>
+                <li>Advance: prev = curr, curr = next; repeat until curr is null</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=reverse+linked+list" target="_blank">Reverse Linked List</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=reverse+linked+list+ii" target="_blank">Reverse Linked List II</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=reverse+nodes+in+k-group" target="_blank">Reverse Nodes in k-Group</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Merge Techniques -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Merge Techniques</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Merge Sorted Lists</div>
+              <div class="dsa-strategy-when">Use when combining two or more sorted linked lists into one sorted result. Two lists: linear merge. K lists: min-heap.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n+m) / O(N log k)</span>
+                <span class="complexity-badge space">O(1) / O(k) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Compare heads of both lists, append smaller to result</li>
+                <li>Advance the pointer of the list whose element was taken</li>
+                <li>For k lists: push all heads into min-heap, pop min, push its next</li>
+                <li>Use a dummy node to simplify head tracking</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=merge+two+sorted+lists" target="_blank">Merge Two Sorted Lists</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=merge+k+sorted+lists" target="_blank">Merge K Sorted Lists</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=sort+list" target="_blank">Sort List</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Dummy Node Pattern -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Dummy Node Pattern</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Dummy / Sentinel Node</div>
+              <div class="dsa-strategy-when">Use when the head of the result list is unknown, or when operations might modify the head. Avoids special-casing the first element.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(varies)</span>
+                <span class="complexity-badge space">O(1) extra</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Create dummy = new ListNode(0)</li>
+                <li>Use a tail pointer starting at dummy to build the result</li>
+                <li>Append nodes to tail.next, advance tail</li>
+                <li>Return dummy.next as the actual head</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=add+two+numbers" target="_blank">Add Two Numbers</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=remove+nth+node+from+end" target="_blank">Remove Nth Node From End</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=partition+list" target="_blank">Partition List</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+    <!-- ==================== 6. DYNAMIC PROGRAMMING ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(124,58,237,0.15)">&#x1F9E9;</div>
+        <div class="dsa-section-title">Dynamic Programming</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- 1D DP -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>1D DP</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Linear Sequence DP</div>
+              <div class="dsa-strategy-when">Use when the optimal solution at position i depends on previous positions. Define dp[i], find recurrence, iterate. Often reducible to O(1) space with rolling variables.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n) time</span>
+                <span class="complexity-badge space">O(n) or O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Define dp[i]: what does it represent? (e.g., max value ending at i, ways to reach i)</li>
+                <li>Find recurrence: dp[i] = f(dp[i-1], dp[i-2], ..., arr[i])</li>
+                <li>Set base cases: dp[0], dp[1], etc.</li>
+                <li>Iterate left-to-right, fill dp; return dp[n-1] or max(dp)</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=climbing+stairs" target="_blank">Climbing Stairs</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=house+robber" target="_blank">House Robber</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=coin+change" target="_blank">Coin Change</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=decode+ways" target="_blank">Decode Ways</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=maximum+subarray" target="_blank">Maximum Subarray</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- 2D DP -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>2D DP</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Grid / Two-Sequence DP</div>
+              <div class="dsa-strategy-when">Use when the problem involves two dimensions (grid paths) or two sequences to compare (LCS, edit distance). dp[i][j] depends on dp[i-1][j], dp[i][j-1], dp[i-1][j-1].</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(m &times; n) time</span>
+                <span class="complexity-badge space">O(m &times; n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Define dp[i][j]: e.g., LCS length of s[0..i] and t[0..j]</li>
+                <li>Identify transitions: match → diagonal + 1, else max of left or above</li>
+                <li>Fill row by row; can optimize to O(min(m,n)) space with rolling array</li>
+                <li>Answer is dp[m][n] or max over all dp[i][j]</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=unique+paths" target="_blank">Unique Paths</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+common+subsequence" target="_blank">Longest Common Subsequence</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=edit+distance" target="_blank">Edit Distance</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=minimum+path+sum" target="_blank">Minimum Path Sum</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=0+1+knapsack" target="_blank">0/1 Knapsack</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- DP on Strings -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>DP on Strings</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">String Subsequence / Substring DP</div>
+              <div class="dsa-strategy-when">Use when finding palindromic substrings, matching patterns, or breaking words. dp[i][j] typically represents substring s[i..j].</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n&#xB2;) time</span>
+                <span class="complexity-badge space">O(n&#xB2;) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>For palindromes: dp[i][j] = true if s[i]==s[j] and dp[i+1][j-1] is true</li>
+                <li>Expand from length 1 and 2 substrings to larger</li>
+                <li>For word break: dp[i] = true if some dp[j] is true and s[j..i] is a word</li>
+                <li>Track start position or backtrack for actual solution</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=longest+palindromic+substring" target="_blank">Longest Palindromic Substring</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=palindromic+substrings" target="_blank">Palindromic Substrings</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=word+break" target="_blank">Word Break</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=regular+expression+matching" target="_blank">Regular Expression Matching</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Interval DP -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Interval DP</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Range / Interval DP</div>
+              <div class="dsa-strategy-when">Use when merging intervals or optimizing over contiguous ranges. Iterate over all split points k between i and j. Think "which element to process last."</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n&#xB3;) time</span>
+                <span class="complexity-badge space">O(n&#xB2;) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>dp[i][j] = best answer for the range [i, j]</li>
+                <li>Try every split point k in [i, j]: dp[i][j] = optimize over dp[i][k] + dp[k+1][j] + cost</li>
+                <li>Iterate by increasing interval length (length 1, 2, ..., n)</li>
+                <li>Base case: dp[i][i] = cost of single element</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=burst+balloons" target="_blank">Burst Balloons</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=matrix+chain+multiplication" target="_blank">Matrix Chain Multiplication</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=minimum+cost+to+merge+stones" target="_blank">Min Cost to Merge Stones</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=strange+printer" target="_blank">Strange Printer</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Bitmask DP -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Bitmask DP</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">State Compression DP</div>
+              <div class="dsa-strategy-when">Use when tracking which items in a small set (n &le; 20) have been visited/used. Represent subset as a bitmask integer.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(2&#x207F; &times; n) time</span>
+                <span class="complexity-badge space">O(2&#x207F;) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>State = bitmask where bit i = 1 means item i is included</li>
+                <li>Transition: try adding each unused item (bit = 0) to current state</li>
+                <li>dp[mask] = best value achievable with the items in mask</li>
+                <li>Base case: dp[0] = 0 (empty set)</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=partition+to+k+equal+sum+subsets" target="_blank">Partition to K Equal Subsets</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=shortest+path+visiting+all+nodes" target="_blank">Shortest Path All Nodes</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=travelling+salesman" target="_blank">Travelling Salesman (Held-Karp)</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+    <!-- ==================== 7. BINARY SEARCH (ADVANCED) ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(6,182,212,0.15)">&#x1F50D;</div>
+        <div class="dsa-section-title">Binary Search (Advanced)</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- Search in Rotated Array -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Search in Rotated Array</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Modified Binary Search on Rotation</div>
+              <div class="dsa-strategy-when">Use when a sorted array has been rotated at an unknown pivot and you need to find a target or the minimum element.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(log n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Compute mid; determine which half [lo..mid] or [mid..hi] is sorted</li>
+                <li>Check if target lies within the sorted half's range</li>
+                <li>If yes, search that half; otherwise search the other half</li>
+                <li>For duplicates (II variant), handle arr[lo]==arr[mid]==arr[hi] by shrinking both ends</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=search+in+rotated+sorted+array" target="_blank">Search in Rotated Array</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=search+in+rotated+sorted+array+ii" target="_blank">Rotated Array II</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+minimum+in+rotated+sorted+array" target="_blank">Find Min in Rotated Array</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Find Peak Element -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Find Peak Element</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Binary Search on Peaks</div>
+              <div class="dsa-strategy-when">Use when finding a local maximum or minimum where comparing mid with neighbors tells you which direction has a peak.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(log n) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Compare arr[mid] with arr[mid+1]</li>
+                <li>If arr[mid] &gt; arr[mid+1], peak is on left (including mid)</li>
+                <li>If arr[mid] &lt; arr[mid+1], peak is on right</li>
+                <li>Converge to a single element — that is a peak</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+peak+element" target="_blank">Find Peak Element</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=peak+index+in+a+mountain+array" target="_blank">Peak Index in Mountain Array</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+in+mountain+array" target="_blank">Find in Mountain Array</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Binary Search on Answer -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Binary Search on Answer</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Binary Search on Answer Space</div>
+              <div class="dsa-strategy-when">Use when minimizing the maximum or maximizing the minimum of some quantity. The answer lies in a bounded range, and feasibility is monotonic.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n log S) time</span>
+                <span class="complexity-badge space">O(1) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Define the search space [lo, hi] for the answer</li>
+                <li>Binary search: for each candidate mid, check if it's feasible (greedy/linear scan)</li>
+                <li>If feasible, try smaller (for minimize) or larger (for maximize)</li>
+                <li>Return the boundary value when lo == hi</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=capacity+to+ship+packages" target="_blank">Capacity to Ship Packages</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=koko+eating+bananas" target="_blank">Koko Eating Bananas</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=split+array+largest+sum" target="_blank">Split Array Largest Sum</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=magnetic+force+between+two+balls" target="_blank">Magnetic Force Between Balls</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+    <!-- ==================== 8. HEAPS / PRIORITY QUEUES ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(245,158,11,0.15)">&#x1F3D7;&#xFE0F;</div>
+        <div class="dsa-section-title">Heaps / Priority Queues</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- Min vs Max Heap -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Min Heap vs Max Heap</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Heap Fundamentals</div>
+              <div class="dsa-strategy-when">Min heap extracts smallest in O(1), max heap extracts largest. Use for problems needing repeated access to extreme values.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(log n) push/pop, O(1) peek</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Insert: add at end, bubble up to maintain heap property</li>
+                <li>Extract: remove root, move last to root, bubble down</li>
+                <li>Heapify an array in O(n) by sifting down from last parent to root</li>
+                <li>In most languages, negate values to simulate max heap from min heap</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=kth+largest+element+in+a+stream" target="_blank">Kth Largest in Stream</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=last+stone+weight" target="_blank">Last Stone Weight</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=sort+an+array" target="_blank">Sort Array (Heap Sort)</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Top-K Pattern -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Top-K Pattern</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Heap for Top K</div>
+              <div class="dsa-strategy-when">Use when finding K largest, smallest, or most frequent items. Min-heap of size k for "k largest" — smallest item in heap is the kth largest.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(n log k) time</span>
+                <span class="complexity-badge space">O(k) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Push elements into a min-heap</li>
+                <li>When heap size exceeds k, pop the minimum</li>
+                <li>After all elements, heap contains the k largest</li>
+                <li>Alternative: Quickselect for O(n) average without full sort</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=kth+largest+element+in+an+array" target="_blank">Kth Largest in Array</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=top+k+frequent+elements" target="_blank">Top K Frequent Elements</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=top+k+frequent+words" target="_blank">Top K Frequent Words</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=k+closest+points+to+origin" target="_blank">K Closest Points to Origin</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Two Heaps Pattern -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Two Heaps Pattern</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Dual Heap (Median Finder)</div>
+              <div class="dsa-strategy-when">Use when tracking the median of a data stream. Max-heap for lower half, min-heap for upper half. Median is at the top(s).</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(log n) insert, O(1) median</span>
+                <span class="complexity-badge space">O(n) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Add to max-heap (lower half) if value &le; max-heap top, else to min-heap</li>
+                <li>Balance: if sizes differ by &gt; 1, move top of larger to smaller</li>
+                <li>Median: if equal sizes, average of both tops; else top of larger heap</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=find+median+from+data+stream" target="_blank">Find Median From Data Stream</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=sliding+window+median" target="_blank">Sliding Window Median</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=ipo" target="_blank">IPO</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- K-way Merge -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>K-way Merge</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Merge K Sorted Sequences</div>
+              <div class="dsa-strategy-when">Use when merging multiple sorted lists, arrays, or iterators into one sorted result. Min-heap holds one element per list.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(N log k) time</span>
+                <span class="complexity-badge space">O(k) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Push first element of each list into min-heap (with list index)</li>
+                <li>Pop minimum, add to result</li>
+                <li>Push next element from the same list the popped element came from</li>
+                <li>Repeat until heap is empty</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=merge+k+sorted+lists" target="_blank">Merge K Sorted Lists</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=smallest+range+covering+elements" target="_blank">Smallest Range From K Lists</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=kth+smallest+element+in+a+sorted+matrix" target="_blank">Kth Smallest in Sorted Matrix</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+    <!-- ==================== 9. TRIES ==================== -->
+    <div class="dsa-section">
+      <div class="dsa-section-header" onclick="toggleDsaSection(this)">
+        <div class="dsa-section-icon" style="background:rgba(16,185,129,0.15)">&#x1F332;</div>
+        <div class="dsa-section-title">Tries</div>
+        <span class="dsa-chevron">&#x25BE;</span>
+      </div>
+      <div class="dsa-section-body"><div class="dsa-section-body-inner">
+
+        <!-- Insert, Search, StartsWith -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Insert, Search, StartsWith</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Trie Operations</div>
+              <div class="dsa-strategy-when">Use for efficient prefix lookups over a dictionary of words. Each node stores a children map and an isEnd flag.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(L) per operation</span>
+                <span class="complexity-badge space">O(N &times; L) total</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Insert: for each char, create child node if absent, move down; mark end</li>
+                <li>Search: follow child pointers for each char; return isEnd at last char</li>
+                <li>StartsWith: same as search but don't require isEnd</li>
+                <li>Delete: recurse to end, remove nodes bottom-up if no other children</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=implement+trie" target="_blank">Implement Trie (LC 208)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=design+add+and+search+words" target="_blank">Add and Search Words</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=map+sum+pairs" target="_blank">Map Sum Pairs</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Word Search II -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Word Search II (Trie + Backtracking)</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Trie + Grid Backtracking</div>
+              <div class="dsa-strategy-when">Use when searching for multiple words simultaneously in a 2D grid. Trie prunes DFS paths that don't match any word prefix.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(m &times; n &times; 4^L) time</span>
+                <span class="complexity-badge space">O(W &times; L) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Build trie from word list</li>
+                <li>DFS from each cell, following trie children</li>
+                <li>If trie node is end-of-word, add word to results</li>
+                <li>Prune: remove trie leaves after finding word to avoid duplicates</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=word+search+ii" target="_blank">Word Search II (LC 212)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=word+search" target="_blank">Word Search (LC 79)</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Auto-complete Structure -->
+        <div class="dsa-subtopic">
+          <div class="dsa-subtopic-header" onclick="toggleDsaSubtopic(this)">
+            <span>Auto-complete Structure</span>
+            <span class="dsa-chevron">&#x25BE;</span>
+          </div>
+          <div class="dsa-subtopic-body"><div class="dsa-subtopic-body-inner">
+            <div class="dsa-strategy">
+              <div class="dsa-strategy-name">Prefix-based Autocomplete</div>
+              <div class="dsa-strategy-when">Use for suggesting completions based on a typed prefix. Navigate trie to prefix node, then DFS/BFS to collect all words below it.</div>
+              <div class="dsa-badges">
+                <span class="complexity-badge time">O(p + k) time</span>
+                <span class="complexity-badge space">O(N &times; L) space</span>
+              </div>
+              <ol class="dsa-steps">
+                <li>Navigate trie to the node matching the prefix</li>
+                <li>DFS from that node, collecting all words (paths to isEnd nodes)</li>
+                <li>For top-k suggestions, store frequency/weight at nodes and use a heap</li>
+                <li>Return sorted suggestions</li>
+              </ol>
+              <div class="dsa-problems">
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=search+suggestions+system" target="_blank">Search Suggestions (LC 1268)</a>
+                <a class="problem-chip" href="https://leetcode.com/problemset/?search=design+search+autocomplete+system" target="_blank">Autocomplete System (LC 642)</a>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+      </div></div>
+    </div>
+
+  </div>
+
 </div>
 
 <script>
-function showTab(id) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(el) { el.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
+}
+
+function toggleDsaSection(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+function toggleDsaSubtopic(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+function filterDsa() {
+  var query = document.getElementById('dsaSearch').value.toLowerCase().trim();
+  var sections = document.querySelectorAll('.dsa-section');
+
+  sections.forEach(function(section) {
+    if (!query) {
+      section.classList.remove('dsa-hidden');
+      section.querySelectorAll('.dsa-subtopic').forEach(function(sub) { sub.classList.remove('dsa-hidden'); });
+      return;
+    }
+
+    var sectionMatch = false;
+    var title = section.querySelector('.dsa-section-title').textContent.toLowerCase();
+
+    if (title.indexOf(query) !== -1) {
+      sectionMatch = true;
+      section.querySelectorAll('.dsa-subtopic').forEach(function(sub) { sub.classList.remove('dsa-hidden'); });
+    } else {
+      section.querySelectorAll('.dsa-subtopic').forEach(function(sub) {
+        var subText = sub.textContent.toLowerCase();
+        if (subText.indexOf(query) !== -1) {
+          sub.classList.remove('dsa-hidden');
+          sectionMatch = true;
+        } else {
+          sub.classList.add('dsa-hidden');
+        }
+      });
+    }
+
+    if (sectionMatch) {
+      section.classList.remove('dsa-hidden');
+      section.classList.add('open');
+    } else {
+      section.classList.add('dsa-hidden');
+    }
+  });
 }
 </script>
 </body>
